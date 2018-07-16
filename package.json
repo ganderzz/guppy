@@ -1,13 +1,13 @@
 {
   "name": "guppy",
   "productName": "Guppy",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "private": true,
   "main": "src/main.js",
   "homepage": "./",
   "repository": {
     "type": "git",
-    "url": "https://github.com/joshwcomeau/guppy.git"
+    "url": "https://github.com/ganderzz/guppy.git"
   },
   "scripts": {
     "start": "NODE_ENV=development npm run start:react",
@@ -19,7 +19,13 @@
     "flow": "flow",
     "prettier": "prettier --write",
     "detect-port": "./node_modules/detect-port-alt/bin/detect-port 3000",
-    "precommit": "yarn run flow && lint-staged"
+    "precommit": "yarn run flow && lint-staged",
+    "pack": "electron-builder --dir",
+    "dist": "build --mac --win -p always",
+    "dist:windows": "electron-builder -w",
+    "dist:mac": "electron-builder -m",
+    "dist:linux": "electron-builder -l",
+    "postinstall": "install-app-deps"
   },
   "lint-staged": {
     "*.js": [
@@ -30,6 +36,7 @@
   "dependencies": {
     "create-react-app": "1.5.2",
     "electron-store": "2.0.0",
+    "electron-updater": "3.0.3",
     "fix-path": "2.1.0",
     "gatsby-cli": "1.1.58",
     "ps-tree": "1.1.0"
@@ -53,6 +60,8 @@
     "dotenv": "5.0.0",
     "dotenv-expand": "4.2.0",
     "electron": "2.0.1",
+    "electron-builder": "^20.21.2",
+    "electron-log": "^2.2.16",
     "electron-packager": "12.1.0",
     "eslint": "4.15.0",
     "eslint-config-react-app": "3.0.0-next.66cc7a90",
@@ -178,5 +187,28 @@
     "color": "#FF6D00",
     "icon": null,
     "createdAt": 1529502079329
+  },
+  "build": {
+    "appId": "guppy",
+    "productName": "guppy",
+    "mac": {
+      "category": "guppy"
+    },
+    "directories": {
+      "output": "release"
+    },
+    "publish": [
+      {
+        "provider": "github",
+        "owner": "ganderzz",
+        "repo": "https://github.com/ganderzz/guppy.git"
+      }
+    ],
+    "files": [
+      "./src/**/*",
+      "./public/*",
+      "./icon.png",
+      "./build/**/*"
+    ]
   }
 }

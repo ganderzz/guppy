@@ -1,0 +1,17 @@
+directories:
+  output: release
+  buildResources: build
+appId: guppy
+productName: guppy
+mac:
+  category: guppy
+publish:
+  - provider: github
+    owner: ganderzz
+    repo: 'https://github.com/ganderzz/guppy.git'
+files:
+  - ./src/**/*
+  - ./public/*
+  - ./icon.png
+  - ./build/**/*
+electronVersion: 2.0.1
