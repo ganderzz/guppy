@@ -19,7 +19,10 @@
     "flow": "flow",
     "prettier": "prettier --write",
     "detect-port": "./node_modules/detect-port-alt/bin/detect-port 3000",
-    "precommit": "yarn run flow && lint-staged"
+    "precommit": "yarn run flow && lint-staged",
+    "pack": "electron-builder --dir",
+    "dist": "npm run build && electron-builder",
+    "postinstall": "install-app-deps"
   },
   "lint-staged": {
     "*.js": [
@@ -53,6 +56,7 @@
     "dotenv": "5.0.0",
     "dotenv-expand": "4.2.0",
     "electron": "2.0.1",
+    "electron-builder": "^20.21.2",
     "electron-packager": "12.1.0",
     "eslint": "4.15.0",
     "eslint-config-react-app": "3.0.0-next.66cc7a90",
@@ -178,5 +182,26 @@
     "color": "#FF6D00",
     "icon": null,
     "createdAt": 1529502079329
+  },
+  "guppy": {
+    "id": "guppy",
+    "name": "guppy",
+    "type": "create-react-app",
+    "color": "#FF6D00",
+    "icon": null,
+    "createdAt": 1529502079329
+  },
+  "build": {
+    "appId": "guppy",
+    "mac": {
+      "category": "your.app.category.type"
+    },
+    "directories": {
+      "output": "release-builds"
+    },
+    "publish": [
+      "github"
+    ],
+    "files": ["./src/**/*", "./public/*", "./icon.png", "./build/**/*"]
   }
 }
