@@ -21,7 +21,9 @@
     "detect-port": "./node_modules/detect-port-alt/bin/detect-port 3000",
     "precommit": "yarn run flow && lint-staged",
     "pack": "electron-builder --dir",
-    "dist": "npm run build && electron-builder",
+    "dist:windows": "electron-builder -w",
+    "dist:mac": "electron-builder -m",
+    "dist:linux": "electron-builder -l",
     "postinstall": "install-app-deps"
   },
   "lint-staged": {
@@ -193,8 +195,9 @@
   },
   "build": {
     "appId": "guppy",
+    "productName": "guppy",
     "mac": {
-      "category": "your.app.category.type"
+      "category": "guppy"
     },
     "directories": {
       "output": "release-builds"
